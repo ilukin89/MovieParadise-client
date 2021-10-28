@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import propTypes from 'prop-types';
 
 export function RegistrationView(props){
     const [name, setName] = useState('');
