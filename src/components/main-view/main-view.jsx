@@ -17,7 +17,8 @@ export class MainView extends React.Component {
         // { _id: 3, Title: 'Django Unchained', Description: 'In 1868 Texas, brothers Ace and Dicky Speck drive a group of shackled black slaves on foot. Among them is Django, sold off and separated from his wife, a house slave who speaks German and English. They are stopped by Dr. King Schultz, a German dentist, now bounty hunter, seeking to buy Django for his knowledge of the three outlaw Brittle brothers.', ImagePath: 'https://m.media-amazon.com/images/M/MV5BMjIyNTQ5NjQ1OV5BMl5BanBnXkFtZTcwODg1MDU4OA@@._V1_FMjpg_UX1000_.jpg'}
       ],
       selectedMovie: null,
-      user: null
+      user: null,
+      showRegistration: false
     };
   }
 
@@ -42,17 +43,25 @@ export class MainView extends React.Component {
   onLoggedIn(user) {
     console.log(user)
     this.setState({
-      user
+      user, 
+      showRegistration: false
     }, ()=>{console.log(user)});
   }
 
+  onRegistered(user) {
+    this.setState({showRegistration: false})
+  }
+
+  
 
   render() {
-    const { movies, selectedMovie, user } = this.state;
+    const { movies, selectedMovie, user, showRegistration } = this.state;
 
     /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
-    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-
+    if (showRegistration) {return <div><RegistrationView onLoggedIn={user => this.onLoggedIn(user)} />
+    <button onClick={()=>this.setState({showRegistration: !this.state.showRegistration})}>Log In</button></div>}
+    if (!user && !showRegistration) return <div><LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+<button onClick={()=>this.setState({showRegistration: !this.state.showRegistration})}>Register</button></div>
     // Before the movies have been loaded
     if (movies.length === 0) return <div className="main-view" />;
 
