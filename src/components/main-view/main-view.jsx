@@ -23,6 +23,9 @@ export class MainView extends React.Component {
     };
   }
 
+
+  
+
   componentDidMount(){
     axios.get('https://glacial-ocean-39750.herokuapp.com/movies')
       .then(response => {
@@ -53,9 +56,17 @@ export class MainView extends React.Component {
     this.setState({showRegistration: false})
   }
 
-  
+   // Handler to navigate from LoginView to RegistrationView
+   handleRegister = () => {
+    this.setState({
+      showRegistration: true
+    });
+  };
+
+
 
   render() {
+    
     const { movies, selectedMovie, user, showRegistration } = this.state;
 
     /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
@@ -70,7 +81,7 @@ export class MainView extends React.Component {
       <div className="main-view">
         <Navbar bg="navColor" variant="dark" expand="lg">
                 <Container fluid>
-                  <Navbar.Brand href="#home">CinemaFlix</Navbar.Brand>
+                  <Navbar.Brand href="#home">Movie Paradise</Navbar.Brand>
                   <Nav className="me-auto">
                     <Nav.Link href="#home">Movies</Nav.Link>
                     <Nav.Link href="#user">Profile</Nav.Link>
@@ -78,7 +89,8 @@ export class MainView extends React.Component {
                   </Nav>
                 </Container>
               </Navbar> 
-              <div><Container>
+              <div>
+                <Container>
         
         {selectedMovie
           ? (

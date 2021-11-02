@@ -49,30 +49,29 @@ export function RegistrationView(props){
               <Card.Body>
                 <Card.Title className="text-center"><Image className="logo" src="https://i.ibb.co/wzs1GVV/Slika-zaslona-2021-11-01-u-16-03-09.png" fluid /></Card.Title>
                 <Card.Subtitle className="mb-2 text-muted text-center">Already registered? Log in</Card.Subtitle>
-      <Form>
-        
-        <label>
-        Name:
-        <input type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
-      </label>
-      <label>
-        Username:
-        <input type="text" placeholder="Username" value={username} onChange={e => setUsername(e.target.value)} />
-      </label>
-      <label>
-        Password:
-        <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-      </label>
-      <label>
-        E-mail:
-        <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-      </label>
-      <label>
-        Birthday:
-        <input type="date" placeholder="YYYY-mm-DD" value={birthday} onChange={e => setBirthday(e.target.value)} />
-      </label>
-      <button type="submit" onClick={handleSubmit}>Submit</button>
-    </Form>
+                <Form className="d-flex flex-column">
+          <Form.Group>
+            Username
+            <Form.Control type='text' value={username} onChange={e => setUsername(e.target.value)} />
+          </Form.Group>
+          <Form.Group>
+            Password
+            <Form.Control type='password' value={password} onChange={e => setPassword(e.target.value)} />
+
+          </Form.Group>
+          <Form.Group>
+            Email Address
+            <Form.Control type='email' value={email} onChange={e => setEmail(e.target.value)} />
+            <Form.Text className="importantText">We'll never share your email with anyone else </Form.Text>
+
+          </Form.Group>
+          <Form.Group>
+            Birthday
+            <Form.Control type='date' value={birthday} onChange={e => setBirthday(e.target.value)} />
+
+          </Form.Group>
+         
+        </Form>
     </Card.Body>
             </Card>
         </CardGroup>

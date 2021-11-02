@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Navbar, Nav, Form, Button, Card, CardGroup, Container, Row, Col, Image } from 'react-bootstrap';
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
+
+  const { handleRegister } = props;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -11,7 +14,10 @@ export function LoginView(props) {
     /* Send a request to the server for authentication */
     /* then call props.onLoggedIn(username) */
     props.onLoggedIn(username);
+    
   };
+
+  
 
   return (
     <Container fluid className="loginContainer" >
@@ -28,7 +34,7 @@ export function LoginView(props) {
       <Card className="loginCard">
         <Card.Body>
           <Card.Title className="text-center"><Image className="logo" src="https://i.ibb.co/wzs1GVV/Slika-zaslona-2021-11-01-u-16-03-09.png" fluid /> </Card.Title>
-          <Card.Subtitle className="mb-2 text-muted text-center">Don't have account? Register!</Card.Subtitle>
+          <Card.Subtitle className="mb-2 text-muted text-center">Don't have account? Register</Card.Subtitle>
 
     <Form>
       <Form.Group controlId="formUsername">
@@ -43,6 +49,9 @@ export function LoginView(props) {
       <Button className="loginButton" variant="secondary" size="lg" type="submit" onClick={handleSubmit}>
         Log In
       </Button>
+
+    
+     
     </Form>
     </Card.Body>
     </Card></Container>
