@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container, Row, Col, Button, Navbar } from 'react-bootstrap';
 
 export class MovieView extends React.Component {
 
@@ -8,9 +9,13 @@ export class MovieView extends React.Component {
     const { movie, onBackClick } = this.props;
 
     return (
+    
+      <Container fluid className="moviesContainer">
+        <Row>
+          <Col>
       <div className="movie-view">
         <div className="movie-poster">
-          <img src={movie.ImagePath} />
+          <img src={movie.ImagePath} crossOrigin="true" />
         </div>
         <div className="movie-title">
           <span className="label">Title: </span>
@@ -22,6 +27,10 @@ export class MovieView extends React.Component {
         </div>
         <button onClick={() => { onBackClick(null); }}>Back</button>
        </div>
+       </Col>
+        </Row>
+        
+       </Container>
     );
   }
 }

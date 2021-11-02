@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import { Navbar, Nav, Form, Button, Card, CardGroup, Container, Row, Col, Image } from 'react-bootstrap';
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -15,6 +14,22 @@ export function LoginView(props) {
   };
 
   return (
+    <Container fluid className="loginContainer" >
+
+      <Navbar bg="navColor" variant="dark" expand="lg">
+        <Container fluid>
+          <Navbar.Brand href="#home">Movie Paradise</Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link href="#logout">Login</Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
+    
+      <Card className="loginCard">
+        <Card.Body>
+          <Card.Title className="text-center"><Image className="logo" src="https://i.ibb.co/wzs1GVV/Slika-zaslona-2021-11-01-u-16-03-09.png" fluid /> </Card.Title>
+          <Card.Subtitle className="mb-2 text-muted text-center">Don't have account? Register!</Card.Subtitle>
+
     <Form>
       <Form.Group controlId="formUsername">
         <Form.Label>Username:</Form.Label>
@@ -25,9 +40,11 @@ export function LoginView(props) {
         <Form.Label>Password:</Form.Label>
         <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
       </Form.Group>
-      <Button variant="primary" type="submit" onClick={handleSubmit}>
-        Submit
+      <Button className="loginButton" variant="secondary" size="lg" type="submit" onClick={handleSubmit}>
+        Log In
       </Button>
     </Form>
+    </Card.Body>
+    </Card></Container>
   );
 }

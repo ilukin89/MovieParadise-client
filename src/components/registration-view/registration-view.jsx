@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import propTypes from 'prop-types';
+import { Navbar, Nav, Form, Button, Card, CardGroup, Container, Row, Col, Image } from 'react-bootstrap';
 
 export function RegistrationView(props){
     const [name, setName] = useState('');
@@ -32,7 +33,24 @@ export function RegistrationView(props){
 
     return(
 
-      <form>
+      <Container fluid className="registerContainer" >
+        <Navbar bg="navColor" variant="dark" expand="lg">
+          <Container fluid>
+            <Navbar.Brand href="#home"></Navbar.Brand>
+            <Nav className="me-auto">
+              <Nav.Link href="#logout">Register</Nav.Link>
+            </Nav>
+          </Container>
+        </Navbar>
+        <Row>
+        <Col>
+          <CardGroup>
+            <Card className="registerCard">
+              <Card.Body>
+                <Card.Title className="text-center"><Image className="logo" src="https://i.ibb.co/wzs1GVV/Slika-zaslona-2021-11-01-u-16-03-09.png" fluid /></Card.Title>
+                <Card.Subtitle className="mb-2 text-muted text-center">Already registered? Log in</Card.Subtitle>
+      <Form>
+        
         <label>
         Name:
         <input type="text" placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
@@ -54,7 +72,12 @@ export function RegistrationView(props){
         <input type="date" placeholder="YYYY-mm-DD" value={birthday} onChange={e => setBirthday(e.target.value)} />
       </label>
       <button type="submit" onClick={handleSubmit}>Submit</button>
-    </form>
-        
+    </Form>
+    </Card.Body>
+            </Card>
+        </CardGroup>
+        </Col>
+      </Row>
+    </Container>
     );
 }

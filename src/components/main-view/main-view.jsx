@@ -4,8 +4,8 @@ import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import {RegistrationView} from '../registration-view/registration-view';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Navbar, Nav, Container, Row, Col, Button } from 'react-bootstrap';
+
 
 export class MainView extends React.Component {
 
@@ -60,33 +60,46 @@ export class MainView extends React.Component {
 
     /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
     if (showRegistration) {return <div><RegistrationView onLoggedIn={user => this.onLoggedIn(user)} />
-    <button onClick={()=>this.setState({showRegistration: !this.state.showRegistration})}>Log In</button></div>}
+    <Button className="loginButton" variant="primary" size="lg" type="submit" onClick={()=>this.setState({showRegistration: !this.state.showRegistration})}>Log In</Button></div>}
     if (!user && !showRegistration) return <div><LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-<button onClick={()=>this.setState({showRegistration: !this.state.showRegistration})}>Register</button></div>
+<Button className="loginButton" variant="primary" size="lg" type="submit" onClick={()=>this.setState({showRegistration: !this.state.showRegistration})}>Register</Button></div>
     // Before the movies have been loaded
     if (movies.length === 0) return <div className="main-view" />;
 
     return (
       <div className="main-view">
+        <Navbar bg="navColor" variant="dark" expand="lg">
+                <Container fluid>
+                  <Navbar.Brand href="#home">CinemaFlix</Navbar.Brand>
+                  <Nav className="me-auto">
+                    <Nav.Link href="#home">Movies</Nav.Link>
+                    <Nav.Link href="#user">Profile</Nav.Link>
+                    <Nav.Link href="#logout">Logout</Nav.Link>
+                  </Nav>
+                </Container>
+              </Navbar> 
+              <div><Container>
+        
         {selectedMovie
           ? (
-            <Row className="justify-content-md-center">
-              <Col md={8}>
+            <Row className="justify-content-lg-center">
+              <Col lg={9}>
                 <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
               </Col>
             </Row>
           )
           : (
-            <Row className="justify-content-md-center">
+            <Row className="justify-content-lg-center">
               {movies.map(movie => (
-                <Col md={3}>
+                <Col lg={3} md={4} sm={6}>
                   <MovieCard key={movie._id} movie={movie} onMovieClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
                 </Col>
               ))}
             </Row>
           )
         }
-      </div>
+        </Container>
+      </div></div>
     );
   }
 }

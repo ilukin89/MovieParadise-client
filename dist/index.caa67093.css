@@ -1,4 +1,18 @@
-.my-flix {
-  color: steelblue;
+button, .btn, .btn-primary {
+  background-color: #ce1f3a;
+  color: white;
+  border-color: #ef97a4;
+  margin-top: 0.9rem;
+}
+
+button:hover, .btn-primary:hover {
+  background-color: #e96a7e;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
+html, body, .app-container {
+  font-family: "Fira Sans", sans-serif;
 }
 /*# sourceMappingURL=index.caa67093.css.map */
