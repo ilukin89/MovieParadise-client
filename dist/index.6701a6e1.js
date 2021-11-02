@@ -40228,6 +40228,17 @@ function RegistrationView(props) {
                                                         __self: this
                                                     })
                                                 ]
+                                            }),
+                                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                                                variant: "success",
+                                                type: "submit",
+                                                onClick: handleSubmit,
+                                                __source: {
+                                                    fileName: "src/components/registration-view/registration-view.jsx",
+                                                    lineNumber: 73
+                                                },
+                                                __self: this,
+                                                children: "Register"
                                             })
                                         ]
                                     })
