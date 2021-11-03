@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types'
 import { Navbar, Nav, Form, Button, Card, CardGroup, Container, Row, Col, Image } from 'react-bootstrap';
 
 export function LoginView(props) {
@@ -33,7 +34,7 @@ export function LoginView(props) {
     
       <Card className="loginCard">
         <Card.Body>
-          <Card.Title className="text-center"><Image className="logo" src="https://i.ibb.co/wzs1GVV/Slika-zaslona-2021-11-01-u-16-03-09.png" fluid /> </Card.Title>
+          <Card.Title className="text-center"><Image className="logo" src="https://i.ibb.co/wzs1GVV/Slika-zaslona-2021-11-01-u-16-03-09.png" fluid crossOrigin="true" /> </Card.Title>
           <Card.Subtitle className="mb-2 text-muted text-center">Don't have account? Register</Card.Subtitle>
 
     <Form>
@@ -57,3 +58,9 @@ export function LoginView(props) {
     </Card></Container>
   );
 }
+
+LoginView.propTypes = {
+  onLoggedIn: PropTypes.func.isRequired,
+  handleRegister: PropTypes.func
+}
+

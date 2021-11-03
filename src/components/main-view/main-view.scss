@@ -1,0 +1,16 @@
+*{
+  box-sizing: border-box;
+}
+
+.card {
+  margin-bottom: 2rem;
+}
+
+.card-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+

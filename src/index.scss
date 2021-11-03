@@ -5,14 +5,15 @@ button, .btn, .btn-primary {
    margin-top: 0.9rem;
    }
   
-   button:hover, .btn-primary:hover {
- background-color: #e96a7e;
- border: none;
- color: white;
- text-decoration: none;
+//    button:hover, .btn-primary:hover {
+//  background-color: #e96a7e;
+//  border: none;
+//  color: white;
+//  text-decoration: none;
 
-   }
+//    }
 
    html, body, .app-container {
       font-family: 'Fira Sans', sans-serif;
+      margin-bottom: 3rem;
     }

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Navbar, Nav, Form, Button, Card, CardGroup, Container, Row, Col, Image } from 'react-bootstrap';
 
 export function RegistrationView(props){
@@ -47,7 +47,7 @@ export function RegistrationView(props){
           <CardGroup>
             <Card className="registerCard">
               <Card.Body>
-                <Card.Title className="text-center"><Image className="logo" src="https://i.ibb.co/wzs1GVV/Slika-zaslona-2021-11-01-u-16-03-09.png" fluid /></Card.Title>
+                <Card.Title className="text-center"><Image className="logo" src="https://i.ibb.co/wzs1GVV/Slika-zaslona-2021-11-01-u-16-03-09.png" fluid crossOrigin="true" /></Card.Title>
                 <Card.Subtitle className="mb-2 text-muted text-center">Already registered? Log in</Card.Subtitle>
                 <Form className="d-flex flex-column">
           <Form.Group>
@@ -80,3 +80,13 @@ export function RegistrationView(props){
     </Container>
     );
 }
+
+RegistrationView.propTypes = {
+  register: PropTypes.shape({
+    Username: PropTypes.string.isRequired,
+    Password: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    Birthday: PropTypes.string.isRequired
+  }),
+  onLoggedIn: PropTypes.func.isRequired
+};

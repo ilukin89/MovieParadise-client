@@ -6,6 +6,7 @@ import { MovieView } from '../movie-view/movie-view';
 import {RegistrationView} from '../registration-view/registration-view';
 import { Navbar, Nav, Container, Row, Col, Button } from 'react-bootstrap';
 
+import './main-view.scss'
 
 export class MainView extends React.Component {
 
@@ -73,13 +74,13 @@ export class MainView extends React.Component {
     if (showRegistration) {return <div><RegistrationView onLoggedIn={user => this.onLoggedIn(user)} />
     <Button className="loginButton" variant="primary" size="lg" type="submit" onClick={()=>this.setState({showRegistration: !this.state.showRegistration})}>Log In</Button></div>}
     if (!user && !showRegistration) return <div><LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-<Button className="loginButton" variant="primary" size="lg" type="submit" onClick={()=>this.setState({showRegistration: !this.state.showRegistration})}>Register</Button></div>
+    <Button className="loginButton" variant="primary" size="lg" type="submit" onClick={()=>this.setState({showRegistration: !this.state.showRegistration})}>Register</Button></div>
     // Before the movies have been loaded
     if (movies.length === 0) return <div className="main-view" />;
 
     return (
       <div className="main-view">
-        <Navbar bg="navColor" variant="dark" expand="lg">
+        <Navbar expand="lg">
                 <Container fluid>
                   <Navbar.Brand href="#home">Movie Paradise</Navbar.Brand>
                   <Nav className="me-auto">

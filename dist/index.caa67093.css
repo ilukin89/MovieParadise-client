@@ -5,14 +5,24 @@ button, .btn, .btn-primary {
   margin-top: 0.9rem;
 }
 
-button:hover, .btn-primary:hover {
-  background-color: #e96a7e;
-  border: none;
-  color: white;
-  text-decoration: none;
-}
-
 html, body, .app-container {
   font-family: "Fira Sans", sans-serif;
+  margin-bottom: 3rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.card {
+  margin-bottom: 2rem;
+}
+
+.card-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
 }
 /*# sourceMappingURL=index.caa67093.css.map */
