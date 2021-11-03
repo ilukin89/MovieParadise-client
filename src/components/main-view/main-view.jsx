@@ -4,7 +4,7 @@ import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import {RegistrationView} from '../registration-view/registration-view';
-import { Navbar, Nav, Container, Row, Col, Button } from 'react-bootstrap';
+import { Navbar, Nav, Container, Row, Col, Button, Image } from 'react-bootstrap';
 
 import './main-view.scss'
 
@@ -82,7 +82,7 @@ export class MainView extends React.Component {
       <div className="main-view">
         <Navbar expand="lg">
                 <Container fluid>
-                  <Navbar.Brand href="#home">Movie Paradise</Navbar.Brand>
+                  <Navbar.Brand href="#home"><Image className="logo" src="https://i.ibb.co/wzs1GVV/Slika-zaslona-2021-11-01-u-16-03-09.png" fluid crossOrigin="true" /></Navbar.Brand>
                   <Nav className="me-auto">
                     <Nav.Link href="#home">Movies</Nav.Link>
                     <Nav.Link href="#user">Profile</Nav.Link>

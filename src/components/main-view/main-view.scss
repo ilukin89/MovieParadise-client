@@ -6,11 +6,19 @@
   margin-bottom: 2rem;
 }
 
+.card-title.h5 {
+  font-weight: 600;
+}
+
 .card-text {
   text-overflow: ellipsis;
   overflow: hidden;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   display: -webkit-box;
+}
+
+img.logo {
+  height: 12vh;
 }
 

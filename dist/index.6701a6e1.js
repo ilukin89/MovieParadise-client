@@ -23066,7 +23066,17 @@ class MainView extends _reactDefault.default.Component {
                                     lineNumber: 85
                                 },
                                 __self: this,
-                                children: "Movie Paradise"
+                                children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Image, {
+                                    className: "logo",
+                                    src: "https://i.ibb.co/wzs1GVV/Slika-zaslona-2021-11-01-u-16-03-09.png",
+                                    fluid: true,
+                                    crossOrigin: "true",
+                                    __source: {
+                                        fileName: "src/components/main-view/main-view.jsx",
+                                        lineNumber: 85
+                                    },
+                                    __self: this
+                                })
                             }),
                             /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Nav, {
                                 className: "me-auto",
