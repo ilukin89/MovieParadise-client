@@ -1,1 +1,1 @@
-# CinemaFlix-Client
+# Movie Paradise
