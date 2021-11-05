@@ -1,92 +1,111 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import PropTypes from "prop-types";
 import axios from 'axios';
-import PropTypes from 'prop-types';
-import { Navbar, Nav, Form, Button, Card, CardGroup, Container, Row, Col, Image } from 'react-bootstrap';
+import { Navbar, Nav, Form, Button, Card, CardGroup, Container, Row, Col } from 'react-bootstrap';
 
-export function RegistrationView(props){
-    const [name, setName] = useState('');
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
-    const [birthday, setBirthday] = useState('');
-    
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        axios.post('https://glacial-ocean-39750.herokuapp.com/users', {
-            Name: name,
-            Username: username,
-            Password: password,
-            Email: email,
-            Birthday: birthday
-        })
-        .then(response => {
-            const user = response.data;
-            console.log(user);
-            props.onLoggedIn(user)
-            // window.open('/', '_self'); //'_self' is necessary to let the page open in current tab
-        })
-        .catch( e => {
-            console.log('error registering the user')
-        })
-    };
+import './registration-view.scss';
 
-    return(
+export function RegistrationView (props) {
+  const [ username, setUsername ] = useState('');
+  const [ password, setPassword ] = useState('');
+  const [ email, setEmail ] = useState('');
+  const [ Birthday, setBirthday] = useState('');
 
-      <Container fluid className="registerContainer" >
-        <Navbar bg="navColor" variant="dark" expand="lg">
-          <Container fluid>
-            <Navbar.Brand href="#home"></Navbar.Brand>
-            <Nav className="me-auto">
-              <Nav.Link href="#logout">Register</Nav.Link>
-            </Nav>
-          </Container>
-        </Navbar>
-        <Row>
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post('https://glacial-ocean-39750.herokuapp.com/users', {
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: Birthday
+    })
+    .then(response => {
+      const data = response.data;
+      console.log(data);
+      window.open('/', '_self'); // '_self' is necessary to open page in the current tab
+    })
+    .catch(e => {
+      console.log('error registering the user')
+    });
+  };
+
+  return (
+ 
+
+    <Container  className="registerContainer" >
+  
+     
+      <Row>
         <Col>
           <CardGroup>
             <Card className="registerCard">
               <Card.Body>
-                <Card.Title className="text-center"><Image className="logo" src="https://i.ibb.co/wzs1GVV/Slika-zaslona-2021-11-01-u-16-03-09.png" fluid crossOrigin="true" /></Card.Title>
-                <Card.Subtitle className="mb-2 text-muted text-center">Already registered? Log in</Card.Subtitle>
-                <Form className="d-flex flex-column">
-          <Form.Group>
-            Username
-            <Form.Control type='text' value={username} onChange={e => setUsername(e.target.value)} />
-          </Form.Group>
-          <Form.Group>
-            Password
-            <Form.Control type='password' value={password} onChange={e => setPassword(e.target.value)} />
+                <Card.Title className="text-center">Welcome to Movie Paradise</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted text-center">Please Register</Card.Subtitle>
+            
+                <Form>
+                  <Form.Group>
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control 
+                      type="text" 
+                      value={username} 
+                      onChange={e => setUsername(e.target.value)} 
+                      placeholder="*required field"
+                      required
+                    />
+                  </Form.Group>
 
-          </Form.Group>
-          <Form.Group>
-            Email Address
-            <Form.Control type='email' value={email} onChange={e => setEmail(e.target.value)} />
-            <Form.Text className="importantText">We'll never share your email with anyone else </Form.Text>
+                  <Form.Group>
+                    <Form.Label>Password</Form.Label>
+                      <Form.Control 
+                      type="password" 
+                      value={password} 
+                      onChange={e => setPassword(e.target.value)} 
+                      placeholder="*required field"
+                      required
+                    />
+                  </Form.Group>
 
-          </Form.Group>
-          <Form.Group>
-            Birthday
-            <Form.Control type='date' value={birthday} onChange={e => setBirthday(e.target.value)} />
+                  <Form.Group>
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control 
+                      type="email" 
+                      value={email} 
+                      onChange={e => setEmail(e.target.value)} 
+                      placeholder="*required field"
+                      required
+                    />
+                  </Form.Group>
 
-          </Form.Group>
-          <Button variant="success" type='submit' onClick={handleSubmit}>Register</Button>
-        </Form>
-    </Card.Body>
+                  <Form.Group>
+                    <Form.Label>Birthday</Form.Label>
+                    <Form.Control 
+                      className="mb-3" 
+                      type="date" 
+                      value={Birthday} 
+                      onChange={e => setBirthday(e.target.value)} 
+                    />
+                  </Form.Group>
+                  
+                  <Button 
+                    className="registerButton" 
+                    variant="success" type="submit" 
+                    onClick={handleSubmit}>Register
+                  </Button>
+                  
+                </Form>
+              </Card.Body>
             </Card>
         </CardGroup>
         </Col>
       </Row>
     </Container>
-    );
+
+  );
 }
 
 RegistrationView.propTypes = {
-  register: PropTypes.shape({
-    Username: PropTypes.string.isRequired,
-    Password: PropTypes.string.isRequired,
-    Email: PropTypes.string.isRequired,
-    Birthday: PropTypes.string.isRequired
-  }),
-  onLoggedIn: PropTypes.func.isRequired
-};
+  onRegistration: PropTypes.func.isRequired
+}

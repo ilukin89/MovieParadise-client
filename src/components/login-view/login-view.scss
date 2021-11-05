@@ -1,12 +1,33 @@
-button, .btn, .btn-primary {
-  background-color: #ce1f3a; 
-  color: white; 
-  border-color: #ef97a4;
-  margin-top: 0.9rem;
-  }
- 
 
-  .form-control {
-    width: 50%;
+*{
+  box-sizing: border-box;
+}
 
+.loginContainer{
+  width: 100%;
+}
+
+  .loginCard {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 50px;
+    background:white;
+    color: black;
   }
+
+  .btn-success {
+    width: 100%;
+    display: block;
+  }
+
+
+form {
+  display: block;
+
+}
+
+.loginButton {
+  width: 100%;
+  display: block;
+}
