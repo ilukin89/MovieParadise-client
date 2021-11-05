@@ -1,6 +1,6 @@
 # Movie Paradise
 
-Objective
+<b>Objective</b>
 Using React, build the client-side for an application called Movie Paradise based on its existing server-side code (REST API and database).
 
 Guidelines
