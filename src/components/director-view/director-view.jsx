@@ -25,8 +25,8 @@ export class DirectorView extends React.Component {
               </div>
 
               <div className="director-birth">
-                <span className="title">BirthYear: </span>
-                <span className="value">{director.Bio}</span>
+                <span className="title">Birth Year: </span>
+                <span className="value">{director.Birth}</span>
               </div>
 
               <div className="director-button-div">
@@ -46,7 +46,7 @@ DirectorView.propTypes = {
     Director: PropTypes.shape({
       Name: PropTypes.string.isRequired,
       Bio: PropTypes.string.isRequired,
-      BirthYear: PropTypes.number.isRequired
+      Birth: PropTypes.number.isRequired
     }).isRequired,
   })
 };
