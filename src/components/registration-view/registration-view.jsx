@@ -27,9 +27,19 @@ export function RegistrationView (props) {
       window.open('/', '_self'); // '_self' is necessary to open page in the current tab
     })
     .catch(e => {
-      console.log('error registering the user')
+      if (username === '' || username === null) {
+        alert('Username is required');
+      } else if (username.length < 5) {
+        alert('Username needs to be longer then 5 letters');
+      } else if (password === '' || password === null) {
+        alert('Password is required');
+      } else if (email.indexOf('@') === -1) {
+        alert('You need a valid email adress');
+      } else if (birthday === '') {
+        alert('enter your birthday');
+      }
     });
-  };
+};
 
   return (
  
@@ -106,6 +116,12 @@ export function RegistrationView (props) {
   );
 }
 
-RegistrationView.propTypes = {
-  onRegistration: PropTypes.func.isRequired
+RegistrationView.propTypes = {register: PropTypes.shape({
+  Username: PropTypes.string.isRequired,
+  Password: PropTypes.string.isRequired,
+  Email: PropTypes.string.isRequired,
+  Birthday: PropTypes.string.isRequired
+}),
+  RegistrationView: PropTypes.func
 }
+
