@@ -83,18 +83,36 @@ export class MainView extends React.Component {
 
           <Router>
             
-            <div className="main-view">
-        <Navbar expand="lg">
+          <div className="main-view">
+              {/* conditional statement */}
+             { (!user) ? 
+         <Navbar expand="lg">
                 <Container fluid>
                   <Navbar.Brand href="/"><Image className="logo" href="/" src="https://i.ibb.co/wzs1GVV/Slika-zaslona-2021-11-01-u-16-03-09.png" fluid crossOrigin="true" /></Navbar.Brand>
                   <Nav className="me-auto">
                     <Nav.Link href="/">Movies</Nav.Link>
                     <Nav.Link href="/users/:username">Profile</Nav.Link>
                     <Nav.Link href="/register"> Register</Nav.Link>
-                    <Nav.Link href="#login" onClick={() => { this.onLoggedOut() }}>Logout</Nav.Link>
+                    <Nav.Link href="/login"> Login</Nav.Link>
+                    {/* <Nav.Link href="#login" onClick={() => { this.onLoggedOut() }}>Logout</Nav.Link> */}
                   </Nav>
                 </Container>
-              </Navbar> </div>
+              </Navbar> :
+              
+              <Navbar expand="lg">
+              <Container fluid>
+                <Navbar.Brand href="/"><Image className="logo" href="/" src="https://i.ibb.co/wzs1GVV/Slika-zaslona-2021-11-01-u-16-03-09.png" fluid crossOrigin="true" /></Navbar.Brand>
+                <Nav className="me-auto">
+                  <Nav.Link href="/">Movies</Nav.Link>
+                  <Nav.Link href="/users/:username">Profile</Nav.Link>
+                  {/* <Nav.Link href="/register"> Register</Nav.Link> */}
+                  <Nav.Link href="/login" onClick={() => { this.onLoggedOut() }}>Logout</Nav.Link>
+                </Nav>
+              </Container>
+            </Navbar>
+              }
+              
+              </div>
           
             <div>
               <Container>
@@ -116,6 +134,13 @@ export class MainView extends React.Component {
                         <MovieCard movie={m} />
                       </Col>
                     ))
+                  }} />
+
+                    <Route path="/login" render={() => {
+                    if (user) return <Redirect to="/" />
+                    return <Col>
+                      <LoginView />
+                    </Col>
                   }} />
 
                   <Route path="/register" render={() => {
