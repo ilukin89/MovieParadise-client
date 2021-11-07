@@ -7,8 +7,11 @@ import './movie-card.scss';
 
 
 export class MovieCard extends React.Component {
+
   render() {
     const { movie } = this.props;
+
+    const buttonAddToFavorites = this.props.buttonAddToFavorites || false;
 
     return (
       <Container className="movieContainer">
@@ -24,6 +27,7 @@ export class MovieCard extends React.Component {
                   <Link to={`/movies/${movie._id}`}>
                     <Button variant="link">Open</Button>
                   </Link>
+                  {buttonAddToFavorites && <Button variant="link" onClick={()=>{this.props.handleAddToFavorites(movie._id)}}>Add to Favorites</Button>}
                 </Card.Body>
               </Card>
             </CardGroup>

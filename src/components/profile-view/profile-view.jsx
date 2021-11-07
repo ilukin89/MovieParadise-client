@@ -97,11 +97,11 @@ export class ProfileView extends React.Component {
 
   // Delete A Favorite Movie From Users Favorite 
 
-  onRemoveFavorite() {
+  onRemoveFavorite(movieId) {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
 
-    axios.delete(`https://glacial-ocean-39750.herokuapp.com/users/${username}/movies/${movie._id}`, {
+    axios.delete(`https://glacial-ocean-39750.herokuapp.com/users/${username}/movies/${movieId}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((response) => {
