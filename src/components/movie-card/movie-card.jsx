@@ -7,8 +7,11 @@ import './movie-card.scss';
 
 
 export class MovieCard extends React.Component {
+
   render() {
     const { movie } = this.props;
+
+    const buttonAddToFavorites = this.props.buttonAddToFavorites || false;
 
     return (
       <Container className="movieContainer">
@@ -19,10 +22,12 @@ export class MovieCard extends React.Component {
                 <Card.Img className="cardImage" variant="top" src={movie.ImagePath} crossOrigin="true" />
                 <Card.Body>
                   <Card.Title>{movie.Title}</Card.Title>
+                  <Card.Text>{movie.Genre.Name}</Card.Text>
                   <Card.Text>{movie.Description}</Card.Text>
                   <Link to={`/movies/${movie._id}`}>
                     <Button variant="link">Open</Button>
                   </Link>
+                  {buttonAddToFavorites && <Button variant="link" onClick={()=>{this.props.handleAddToFavorites(movie._id)}}>Add to Favorites</Button>}
                 </Card.Body>
               </Card>
             </CardGroup>
@@ -36,7 +41,12 @@ export class MovieCard extends React.Component {
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
-    Description: PropTypes.number.isRequired,
-    ImagePath: PropTypes.string.isRequired
+    Description: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired,
+    Genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired
+    })
   }).isRequired,
 };
+

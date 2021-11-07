@@ -11,7 +11,7 @@ import { MovieView } from '../movie-view/movie-view';
 import { ProfileView } from '../profile-view/profile-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
-import { RegistrationView } from '../registration-view/registration-view';
+import {RegistrationView} from '../registration-view/registration-view';
 
 import { Navbar, Nav, Container, Row, Col, Image } from 'react-bootstrap';
 
@@ -23,6 +23,8 @@ export class MainView extends React.Component {
       movies: [],
       user: null,
     };
+
+    console.log(this);
   }
 
   getMovies(token) {
@@ -40,11 +42,50 @@ export class MainView extends React.Component {
     });
   }
 
+  async handleAddToFavorites(movieId){
+
+    const {user,token} = this.state;
+    const url = `https://glacial-ocean-39750.herokuapp.com/users/${user}/movies/${movieId}`; 
+    console.log(url);
+
+
+    await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(e => {
+      console.log('ERROR:',e);
+    });
+
+
+    // axios.post(url, {
+    //   headers: { 
+    //     'Authorization' : `Bearer ${token}`,
+    //     'Content-Type': 'application/json; charset=utf-8',
+    //     'Accept': 'application/json'
+    //   }
+    // })
+    // .then(response => {
+    //   console.log(response);
+    // })
+    // .catch(e => {
+    //   console.log('ERROR:',e);
+    // });
+  }
+
 
   componentDidMount(){
     let accessToken = localStorage.getItem('token');
+  
     if (accessToken !== null) {
       this.setState({
+        token: accessToken, 
         user: localStorage.getItem('user')
       });
       this.getMovies(accessToken);
@@ -76,25 +117,44 @@ export class MainView extends React.Component {
 
   render() {
     const { movies, user, showRegistration } = this.state;
-   
+
+    // console.log('----> ',user);
 
     return (
 
 
           <Router>
             
-            <div className="main-view">
-        <Navbar expand="lg">
+          <div className="main-view">
+              {/* conditional statement */}
+             { (!user) ? 
+         <Navbar expand="lg">
                 <Container fluid>
                   <Navbar.Brand href="/"><Image className="logo" href="/" src="https://i.ibb.co/wzs1GVV/Slika-zaslona-2021-11-01-u-16-03-09.png" fluid crossOrigin="true" /></Navbar.Brand>
                   <Nav className="me-auto">
                     <Nav.Link href="/">Movies</Nav.Link>
                     <Nav.Link href="/users/:username">Profile</Nav.Link>
                     <Nav.Link href="/register"> Register</Nav.Link>
-                    <Nav.Link href="#login" onClick={() => { this.onLoggedOut() }}>Logout</Nav.Link>
+                    <Nav.Link href="/login"> Login</Nav.Link>
+                    {/* <Nav.Link href="#login" onClick={() => { this.onLoggedOut() }}>Logout</Nav.Link> */}
                   </Nav>
                 </Container>
-              </Navbar> </div>
+              </Navbar> :
+              
+              <Navbar expand="lg">
+              <Container fluid>
+                <Navbar.Brand href="/"><Image className="logo" href="/" src="https://i.ibb.co/wzs1GVV/Slika-zaslona-2021-11-01-u-16-03-09.png" fluid crossOrigin="true" /></Navbar.Brand>
+                <Nav className="me-auto">
+                  <Nav.Link href="/">Movies</Nav.Link>
+                  <Nav.Link href={`/users/${user}`}>Profile</Nav.Link>
+                  {/* <Nav.Link href="/register"> Register</Nav.Link> */}
+                  <Nav.Link href="/login" onClick={() => { this.onLoggedOut() }}>Logout</Nav.Link>
+                </Nav>
+              </Container>
+            </Navbar>
+              }
+              
+              </div>
           
             <div>
               <Container>
@@ -113,9 +173,16 @@ export class MainView extends React.Component {
                     if (movies.length === 0) return (<div className="main-view" />);
                     return movies.map(m => (
                       <Col sm={6} md={4} lg={3} key={m._id}>
-                        <MovieCard movie={m} />
+                        <MovieCard buttonAddToFavorites={true} handleAddToFavorites={this.handleAddToFavorites.bind(this)} movie={m} />
                       </Col>
                     ))
+                  }} />
+
+                    <Route path="/login" render={() => {
+                    if (user) return <Redirect to="/" />
+                    return <Col>
+                      <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+                    </Col>
                   }} />
 
                   <Route path="/register" render={() => {
