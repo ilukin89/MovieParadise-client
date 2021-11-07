@@ -57,7 +57,7 @@ export class MainView extends React.Component {
         'Content-Type': 'application/json'
       }
     })
-    .then(response => response.json())
+    .then(response => response.json(), alert ('Movie added to favourites'))
     .then(data => console.log(data))
     .catch(e => {
       console.log('ERROR:',e);
