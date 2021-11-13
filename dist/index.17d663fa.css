@@ -18,8 +18,13 @@
   display: -webkit-box;
 }
 
-.logo {
-  height: 20%;
+img.logo {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.container-fluid {
+  margin-bottom: 0.6rem;
 }
 * {
   box-sizing: border-box;
@@ -50,6 +55,10 @@ form {
 .loginButton {
   width: 100%;
   display: block;
+}
+
+.logo {
+  width: 50%;
 }
 .movieContainer {
   margin-bottom: 2em;
@@ -217,6 +226,10 @@ span.title, span.description, span.genre, span.director, span.actors {
 .registerButton {
   width: 100%;
   display: block;
+}
+
+.logo {
+  width: 50%;
 }
 * {
   box-sizing: border-box;

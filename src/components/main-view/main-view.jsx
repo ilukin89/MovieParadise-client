@@ -1,6 +1,7 @@
 import React from 'react';
 //importing axios library to fetch movies from database
 import axios from 'axios';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 
 import './main-view.scss';
@@ -15,27 +16,47 @@ import {RegistrationView} from '../registration-view/registration-view';
 
 import { Navbar, Nav, Container, Row, Col, Image } from 'react-bootstrap';
 
-export class MainView extends React.Component {
+// #0
+import { setMovies } from '../../actions/actions';
+import MoviesList from '../movies-list/movies-list';
+
+class MainView extends React.Component {
 
   constructor(){
     super();
     this.state = {
-      movies: [],
+      // movies: [],
       user: null,
     };
 
     console.log(this);
   }
+  
+  // ___________BEFORE REDUX________________
+
+  // getMovies(token) {
+  //   axios.get('https://glacial-ocean-39750.herokuapp.com/movies', {
+  //     headers: { Authorization: `Bearer ${token}`}
+  //   })
+  //   .then(response => {
+  //     // Assigns the result to the state
+  //     this.setState({
+  //       movies: response.data
+  //     });
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+  // }
 
   getMovies(token) {
     axios.get('https://glacial-ocean-39750.herokuapp.com/movies', {
       headers: { Authorization: `Bearer ${token}`}
     })
     .then(response => {
-      // Assigns the result to the state
-      this.setState({
-        movies: response.data
-      });
+
+      // #4
+      this.props.setMovies(response.data);
     })
     .catch(function (error) {
       console.log(error);
@@ -116,7 +137,9 @@ export class MainView extends React.Component {
   
 
   render() {
-    const { movies, user, showRegistration } = this.state;
+    // const { movies, user, showRegistration } = this.state;
+    let { movies } = this.props;
+    let { user } = this.state;
 
     // console.log('----> ',user);
 
@@ -130,10 +153,10 @@ export class MainView extends React.Component {
              { (!user) ? 
          <Navbar expand="lg">
                 <Container fluid>
-                  <Navbar.Brand href="/"><Image className="logo" href="/" src="https://i.ibb.co/wzs1GVV/Slika-zaslona-2021-11-01-u-16-03-09.png" fluid crossOrigin="true" /></Navbar.Brand>
+                  <Navbar.Brand href="/"><Image className="logo" href="/" src="https://i.ibb.co/N3Lqgzn/logo-transparent-background.png" fluid crossOrigin="true" /></Navbar.Brand>
                   <Nav className="me-auto">
                     <Nav.Link href="/">Movies</Nav.Link>
-                    <Nav.Link href="/users/:username">Profile</Nav.Link>
+                    {/* <Nav.Link href="/users/:username">Profile</Nav.Link> */}
                     <Nav.Link href="/register"> Register</Nav.Link>
                     <Nav.Link href="/login"> Login</Nav.Link>
                     {/* <Nav.Link href="#login" onClick={() => { this.onLoggedOut() }}>Logout</Nav.Link> */}
@@ -143,7 +166,7 @@ export class MainView extends React.Component {
               
               <Navbar expand="lg">
               <Container fluid>
-                <Navbar.Brand href="/"><Image className="logo" href="/" src="https://i.ibb.co/wzs1GVV/Slika-zaslona-2021-11-01-u-16-03-09.png" fluid crossOrigin="true" /></Navbar.Brand>
+                <Navbar.Brand href="/"><Image className="logo" href="/" src="https://i.ibb.co/N3Lqgzn/logo-transparent-background.png" fluid crossOrigin="true" /></Navbar.Brand>
                 <Nav className="me-auto">
                   <Nav.Link href="/">Movies</Nav.Link>
                   <Nav.Link href={`/users/${user}`}>Profile</Nav.Link>
@@ -171,11 +194,15 @@ export class MainView extends React.Component {
 
                     // Before the movies have been loaded
                     if (movies.length === 0) return (<div className="main-view" />);
-                    return movies.map(m => (
-                      <Col sm={6} md={4} lg={3} key={m._id}>
-                        <MovieCard buttonAddToFavorites={true} handleAddToFavorites={this.handleAddToFavorites.bind(this)} movie={m} />
-                      </Col>
-                    ))
+                    return  <MoviesList buttonAddToFavorites={true} handleAddToFavorites={this.handleAddToFavorites.bind(this)}   movies={movies} />;
+
+    
+                    
+                    // movies.map(m => (
+                    //   <Col sm={6} md={4} lg={3} key={m._id}>
+                    //     <MovieCard buttonAddToFavorites={true} handleAddToFavorites={this.handleAddToFavorites.bind(this)} movie={m} />
+                    //   </Col>
+                    // ))
                   }} />
 
                     <Route path="/login" render={() => {
@@ -248,3 +275,10 @@ export class MainView extends React.Component {
   }
 
 }
+// #7
+let mapStateToProps = state => {
+  return { movies: state.movies }
+}
+
+// #8
+export default connect(mapStateToProps, { setMovies } )(MainView);
