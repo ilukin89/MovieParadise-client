@@ -43,32 +43,32 @@ Returns data about a genre, with a name and description.
 
 <b>Profile view</b>
 
-Allows users to update their user info (username, password, email, date of birth)
-Allows existing users to deregister
-Displays user's favorite movies
-Allows users to remove a movie from their list of favorites
+Allows users to update their user info (username, password, email, date of birth)<br>
+Allows existing users to deregister<br>
+Displays user's favorite movies<br>
+Allows users to remove a movie from their list of favorites<br>
 
 
 <b>Technical Features:
 </b>
-
-It is a single-page application (SPA)
-It uses state routing to navigate between views and share URLs
-It gives users the option to filter movies
-It initially uses Parcel as its build tool
-React Redux is written using the React library and React Redux
-It uses React Bootstrap as a UI library for styling and responsiveness
-It contains a mix of class components and function components
+<br>
+It is a single-page application (SPA)<br>
+It uses state routing to navigate between views and share <br>
+It gives users the option to filter movies<br>
+It initially uses Parcel as its build tool<br>
+React Redux is written using the React library and React Redux<br>
+It uses React Bootstrap as a UI library for styling and responsiveness<br>
+It contains a mix of class components and function components<br>
 It is hosted online
 
 <b>Dependencies:</b>
 
-React
-react-bootstrap
-react-dom
-react-redux
-react-router-dom
-Redux
-Axios
-prop-types
-redux-devtools-extension
+React<br>
+react-bootstrap<br>
+react-dom<br>
+react-redux<br>
+react-router-dom<br>
+Redux<br>
+Axios<br>
+prop-types<br>
+redux-devtools-extension<br>
