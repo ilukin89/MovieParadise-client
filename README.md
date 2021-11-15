@@ -21,15 +21,15 @@ Allows new users to register (username, password, email, birthday)
 
 <b>Main view</b>
 
-Returns a list of ALL movies to the user (each listed item with an image, title, and release year)
-Sorting and filtering
-Ability to select a movie for more details
+Returns a list of ALL movies to the user (each listed item with an image, title, and release year)<br>
+Sorting and filtering<br>
+Ability to select a movie for more details<br>
 
 <b>Single Movie view</b>
 
-Returns data (image, title, release year, description, genre, director, actors) about a single movie to the user.
-Allows users to add a movie to their list of favorites
-Allow users to move to director and genre viewv
+Returns data (image, title, release year, description, genre, director, actors) about a single movie to the user.<br>
+Allows users to add a movie to their list of favorites<br>
+Allow users to move to director and genre view<br>
 
 
 <b>Director view</b>
