@@ -4,6 +4,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 
+
 import './main-view.scss';
 
 import { LoginView } from '../login-view/login-view';
@@ -61,43 +62,6 @@ class MainView extends React.Component {
     .catch(function (error) {
       console.log(error);
     });
-  }
-
-  async handleAddToFavorites(movieId){
-
-    const {user,token} = this.state;
-    const url = `https://glacial-ocean-39750.herokuapp.com/users/${user}/movies/${movieId}`; 
-    console.log(url);
-
-
-    await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(e => {
-      console.log('ERROR:',e);
-    });
-
-
-    // axios.post(url, {
-    //   headers: { 
-    //     'Authorization' : `Bearer ${token}`,
-    //     'Content-Type': 'application/json; charset=utf-8',
-    //     'Accept': 'application/json'
-    //   }
-    // })
-    // .then(response => {
-    //   console.log(response);
-    // })
-    // .catch(e => {
-    //   console.log('ERROR:',e);
-    // });
   }
 
 
@@ -194,7 +158,7 @@ class MainView extends React.Component {
 
                     // Before the movies have been loaded
                     if (movies.length === 0) return (<div className="main-view" />);
-                    return  <MoviesList buttonAddToFavorites={true} handleAddToFavorites={this.handleAddToFavorites.bind(this)}   movies={movies} />;
+                    return  <MoviesList movies={movies} />;
 
     
                     
@@ -276,7 +240,7 @@ class MainView extends React.Component {
 
 }
 // #7
-let mapStateToProps = state => {
+const mapStateToProps = state => {
   return { movies: state.movies }
 }
 

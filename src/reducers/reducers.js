@@ -2,9 +2,12 @@ import {
   combineReducers
 } from 'redux';
 
+
 import {
   SET_FILTER,
-  SET_MOVIES
+  SET_MOVIES,
+  ADD_MOVIE,
+  UPDATE_FAVORITES
 } from '../actions/actions';
 
 function visibilityFilter(state = '', action) {
@@ -25,9 +28,30 @@ function movies(state = [], action) {
   }
 }
 
+//trying out add movie to favorites
+function addMovie(state = [], action) {
+  switch (action.type) {
+    case ADD_MOVIE:
+      return action.value;
+    default:
+      return state
+  }
+}
+
+function favoriteMovies(state = [], action) {
+  switch (action.type) {
+    case UPDATE_FAVORITES:
+      return action.favoriteMovies
+    default:
+      return state
+  }
+}
+
 const moviesApp = combineReducers({
   visibilityFilter,
-  movies
+  movies,
+  addMovie,
+  favoriteMovies
 });
 
 export default moviesApp;
