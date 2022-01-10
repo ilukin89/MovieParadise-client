@@ -3,8 +3,10 @@
 <a href="https://ibb.co/bHTXC2h"><img src="https://i.ibb.co/bHTXC2h/Slika-zaslona-2021-11-15-u-18-51-38.png" alt="Slika-zaslona-2021-11-15-u-18-51-38" border="0"></a>
 
 <br>
-<b>Live version</b>: <a href="https://movie-paradise-cl.netlify.app/">movie-paradise-cl.netlify.app</a>
+<b>Live version</b>: <a href="https://movie-paradise-cl.netlify.app/">movie-paradise-cl.netlify.app</a> <br> <br>
 <br>
+
+
 <b>Objective</b> 
 <br>
 Using React, build the client-side for an application called Movie Paradise based on its existing server-side code (REST API and database).
