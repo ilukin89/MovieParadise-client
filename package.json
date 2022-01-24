@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/ilukin89/MovieParadise-client/issues"
   },
-  "homepage": "https://github.com/ilukin89/MovieParadise-client#readme",
+  "homepage": "https://github.com/ilukin89/MovieParadise-client",
   "dependencies": {
     "axios": "^0.24.0",
     "prop-types": "^15.7.2",
