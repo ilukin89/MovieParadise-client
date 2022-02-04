@@ -31,5 +31,5 @@
   "devDependencies": {
     "parcel": "^2.0.0"
   },
-  "main": "src/index.html"
+  "main": ".proxyrc.js"
 }
