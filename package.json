@@ -31,6 +31,4 @@
   },
   "devDependencies": {
     "parcel": "^2.0.0"
-  },
-  "main": "dist/index.js"
-}
+  }
