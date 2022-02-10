@@ -31,4 +31,6 @@
   },
   "devDependencies": {
     "parcel": "^2.0.0"
+  },
+  
   }
